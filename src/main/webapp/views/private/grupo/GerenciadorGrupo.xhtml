@@ -1,0 +1,52 @@
+<ui:composition template="/WEB-INF/template/Template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+	<ui:define name="titulo">Novo Grupo</ui:define>
+	
+	<ui:define name="menu">
+		<ui:include src="/WEB-INF/template/MenuPrivate.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+
+		<h:form>
+
+			<h1>Novo Grupo</h1>
+
+			<p:messages autoUpdate="true" closable="true" />
+
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:button value="Novo" outcome="/views/private/grupo/GerenciadorGrupo" />
+					<p:commandButton value="Salvar"
+						action="#{gerenciadorGrupoBean.salvar}" update="@form" />
+				</p:toolbarGroup>
+
+				<p:toolbarGroup align="right">
+					<p:button value="Pesquisar" outcome="/views/private/grupo/PesquisarGrupo" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panelGrid columns="2" id="painel"
+				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo"
+				styleClass="panel-sem-bordas">
+
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" size="50" maxlength="50"
+					value="#{gerenciadorGrupoBean.grupo.nomeGrupo}" />
+
+				<p:outputLabel value="Descrição" for="descricao" />
+				<p:inputText id="descricao" size="80" maxlength="100"
+					value="#{gerenciadorGrupoBean.grupo.descricao}" />
+
+			</p:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
